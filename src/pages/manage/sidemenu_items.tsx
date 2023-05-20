@@ -6,21 +6,17 @@ import {
   BsWindow,
   BsPersonCircle,
   BsJoystick,
-  BsMedium,
   BsFingerprint,
-  BsFront,
-  BsCloudArrowDownFill,
   BsCloudUploadFill,
   BsSearch,
 } from "solid-icons/bs"
-import { FiLogIn } from "solid-icons/fi"
 import { SiMetabase } from "solid-icons/si"
 import { CgDatabase } from "solid-icons/cg"
 import { OcWorkflow2 } from "solid-icons/oc"
 import { IoCopy, IoHome } from "solid-icons/io"
 import { Component, lazy } from "solid-js"
 import { Group, UserRole } from "~/types"
-import { FaBrandsQuinscape, FaSolidBook, FaSolidDatabase } from "solid-icons/fa"
+import { FaSolidDatabase } from "solid-icons/fa"
 
 export type SideMenuItem = SideMenuItemProps & {
   component?: Component
@@ -36,6 +32,13 @@ export const side_menu_items: SideMenuItem[] = [
     to: "/@manage",
     role: UserRole.GUEST,
     component: lazy(() => import("./users/Profile")),
+  },
+  {
+    title: "manage.sidemenu.home",
+    icon: IoHome,
+    to: "/",
+    role: UserRole.GUEST,
+    external: true,
   },
   {
     title: "manage.sidemenu.settings",
@@ -66,18 +69,6 @@ export const side_menu_items: SideMenuItem[] = [
         to: "/@manage/settings/global",
         component: () => <CommonSettings group={Group.GLOBAL} />,
       },
-      {
-        title: "manage.sidemenu.sso",
-        icon: FiLogIn,
-        to: "/@manage/settings/sso",
-        component: () => <CommonSettings group={Group.SSO} />,
-      },
-      {
-        title: "manage.sidemenu.other",
-        icon: BsMedium,
-        to: "/@manage/settings/other",
-        component: lazy(() => import("./settings/Other")),
-      },
     ],
   },
   {
@@ -85,18 +76,6 @@ export const side_menu_items: SideMenuItem[] = [
     icon: OcWorkflow2,
     to: "/@manage/tasks",
     children: [
-      {
-        title: "manage.sidemenu.aria2",
-        icon: BsCloudArrowDownFill,
-        to: "/@manage/tasks/aria2",
-        component: lazy(() => import("./tasks/Aria2")),
-      },
-      {
-        title: "manage.sidemenu.qbit",
-        icon: FaBrandsQuinscape,
-        to: "/@manage/tasks/qbit",
-        component: lazy(() => import("./tasks/Qbit")),
-      },
       {
         title: "manage.sidemenu.upload",
         icon: BsCloudUploadFill,
@@ -140,26 +119,5 @@ export const side_menu_items: SideMenuItem[] = [
     to: "/@manage/backup-restore",
     icon: FaSolidDatabase,
     component: lazy(() => import("./backup-restore")),
-  },
-  {
-    title: "manage.sidemenu.about",
-    icon: BsFront,
-    to: "/@manage/about",
-    role: UserRole.GUEST,
-    component: lazy(() => import("./About")),
-  },
-  {
-    title: "manage.sidemenu.docs",
-    icon: FaSolidBook,
-    to: "https://alist.nn.ci",
-    role: UserRole.GUEST,
-    external: true,
-  },
-  {
-    title: "manage.sidemenu.home",
-    icon: IoHome,
-    to: "/",
-    role: UserRole.GUEST,
-    external: true,
   },
 ]
