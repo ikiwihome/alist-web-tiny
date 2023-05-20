@@ -12,6 +12,8 @@ import Hls from "hls.js"
 import { currentLang } from "~/app/i18n"
 import { VideoBox } from "./video_box"
 
+Artplayer.CONTEXTMENU = false
+
 const Preview = () => {
   const { replace } = useRouter()
   const { proxyLink } = useLink()
