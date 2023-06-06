@@ -36,6 +36,7 @@ export const ContextMenu = () => {
       id={1}
       animation="scale"
       theme={colorMode() !== "dark" ? "light" : "dark"}
+      hidden={true}
     >
       <For each={["rename", "move", "copy", "delete"]}>
         {(name) => (
@@ -66,10 +67,6 @@ export const ContextMenu = () => {
       <Item
         onClick={({ props }) => {
           if (props.is_dir) {
-            if (!canPackageDownload()) {
-              notify.warning(t("home.toolbar.package_download_disabled"))
-              return
-            }
             bus.emit("tool", "package_download")
           } else {
             batchDownloadSelected()
