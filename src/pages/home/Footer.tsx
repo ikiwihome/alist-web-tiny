@@ -13,6 +13,7 @@ export const Footer = () => {
         <AnchorWithBase
           as={Link}
           href={UserMethods.is_guest(me()) ? "/@login" : "/@manage"}
+          hidden={true}
         >
           {t(UserMethods.is_guest(me()) ? "login.login" : "home.footer.manage")}
         </AnchorWithBase>
